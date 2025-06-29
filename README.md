@@ -1,12 +1,58 @@
-# React + Vite
+# 🪙🪙 Coin Change Calculator - Frontend 🪙🪙
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React frontend app built with Vite that allows users to calculate coin denominations for a target amount. It communicates with a backend API to fetch the optimal coin combination.
 
-Currently, two official plugins are available:
+Built for a challenge
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Assumptions made for challenge
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- If there's no possible combination to reach target exactly, the least coins combination will be returned, but will not be equal to target
+
+---
+
+## Features
+
+- Select coin denominations interactively
+- Input target amount with validation (up to 2 decimals)
+- Displays the calculated coin change breakdown
+- Auto-deployment on GitHub Pages (https://im-ksc.github.io/coin-calculator-frontend/)
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js (v22.17.0 recommended)](https://nodejs.org/en/download)
+- npm
+
+### Installation
+1. Clone Repo
+```
+git clone https://github.com/your-username/coin-change-frontend.git
+```
+2. Open terminal and change directory
+```
+cd coin-change-frontend
+```
+3. Install dependencies
+```
+npm install
+```
+4. Run on localhost
+```
+npm run dev
+```
+5. Access at http://localhost:5173/coin-calculator-frontend/
+- Make sure to refer to [@coin-calculator-backend](https://github.com/im-ksc/coin-calculator-backend) to run on localhost **backend** as well.
+
+---
+
+## Tech Stack
+
+- Reactjs
+- Vite (build tool)
+- Tailwind CSS & Bootstrap (styling)
+- Fetch API for backend communication
