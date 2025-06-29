@@ -35,7 +35,7 @@ git clone https://github.com/im-ksc/coin-calculator-frontend.git
 ```
 2. Open terminal and change directory
 ```
-cd coin-change-frontend
+cd coin-calculator-frontend
 ```
 3. Install dependencies
 ```
