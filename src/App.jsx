@@ -50,7 +50,10 @@ function App() {
     try {
         const response = await fetch(`${apiUrl}/api/coin/calculate`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            },
             body: JSON.stringify({
                 target: target,
                 coinDenominations: selectedCoins
