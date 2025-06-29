@@ -3,6 +3,7 @@ import './App.css'
 import TargetInput from './components/TargetInput'
 import CoinDenominations from './components/CoinDenominations';
 import Result from './components/Result';
+import { Spinner } from 'reactstrap';
 
 function App() {
   const [target, setTarget] = useState('');
@@ -10,6 +11,7 @@ function App() {
   const [submittedTarget, setSubmittedTarget] = useState('');
   const [resultCoins, setResultCoins] = useState(null);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_BASE_URL;
   const COINS_DENOMINATIONS = [0.01, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 50, 100, 1000];
@@ -49,6 +51,9 @@ function App() {
       return;
     }
 
+    // show spinning load
+    setIsLoading(true)
+
     try {
         const response = await fetch(`${apiUrl}/api/coin/calculate`, {
             method: 'POST',
@@ -76,6 +81,9 @@ function App() {
 
         const dataText = await response.text();
         
+        // off spinning load
+        setIsLoading(false)
+
         // if response is blank
         if (dataText == "") {
           setError("No solutions found");
@@ -94,12 +102,12 @@ function App() {
   const submitBtn = () => {
     return (
       <>
-        <p className='mt-4'>3. <b>Submit</b> when you are ready!</p>
         <button
           className='rounded px-4 py-2 border-gray-400 border-1 w-full text-sm font-medium transition-colors hover:bg-blue-100 active:bg-gray-400'
           type="submit"
+          disabled={isLoading}
         >
-          Submit
+          {isLoading ? <Spinner size="sm" /> : "Submit"}
         </button>
       </>
     )
@@ -114,6 +122,7 @@ function App() {
             <form onSubmit={handleSubmitBtn}>
               <TargetInput target={target} handleTargetInput={handleTargetInput}/> <br />
               <CoinDenominations coins={COINS_DENOMINATIONS} selectedCoins={selectedCoins} handleCoinClick={handleCoinClick} />
+              <p className='mt-4'>3. <b>Submit</b> when you are ready!</p>
               {submitBtn()}
             </form>
             <Result target={submittedTarget} error={error} resultCoins={resultCoins}/>
