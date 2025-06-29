@@ -10,6 +10,7 @@ function App() {
   const [resultCoins, setResultCoins] = useState(null);
   const [error, setError] = useState(null);
 
+  const apiUrl = import.meta.env.VITE_API_BASE_URL;
   const COINS_DENOMINATIONS = [0.01, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 50, 100, 1000];
 
   function handleTargetInput(value) {
@@ -47,7 +48,7 @@ function App() {
     }
 
     try {
-        const response = await fetch('http://localhost:8080/api/coin/calculate', {
+        const response = await fetch(`${apiUrl}/api/coin/calculate`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
