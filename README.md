@@ -52,7 +52,5 @@ npm run dev
 
 ## Tech Stack
 
-- Reactjs
-- Vite (build tool)
-- Tailwind CSS & Bootstrap (styling)
-- Fetch API for backend communication
+- Reactjs + Vite
+- Tailwind CSS & Bootstrap
