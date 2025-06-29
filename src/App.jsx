@@ -7,6 +7,7 @@ import Result from './components/Result';
 function App() {
   const [target, setTarget] = useState('');
   const [selectedCoins, setSelectedCoins] = useState([]);
+  const [submittedTarget, setSubmittedTarget] = useState('');
   const [resultCoins, setResultCoins] = useState(null);
   const [error, setError] = useState(null);
 
@@ -41,6 +42,7 @@ function App() {
     // reset error and resultCoins
     setError(null);
     setResultCoins(null);
+    setSubmittedTarget('');
 
     if (!isDenominationSelected) {
       setError("Please select at least 1 Coin Denomination")
@@ -83,6 +85,7 @@ function App() {
         const dataJson = JSON.parse(dataText);
 
         setResultCoins(dataJson);
+        setSubmittedTarget(target);
     } catch (err) {
         setError(err.message);
     }
@@ -113,7 +116,7 @@ function App() {
               <CoinDenominations coins={COINS_DENOMINATIONS} selectedCoins={selectedCoins} handleCoinClick={handleCoinClick} />
               {submitBtn()}
             </form>
-            <Result target={target} error={error} resultCoins={resultCoins}/>
+            <Result target={submittedTarget} error={error} resultCoins={resultCoins}/>
           </div>
       </div>
     </>
