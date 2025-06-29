@@ -31,7 +31,7 @@ Built for a challenge
 ### Installation
 1. Clone Repo
 ```
-git clone https://github.com/your-username/coin-change-frontend.git
+git clone https://github.com/im-ksc/coin-calculator-frontend.git
 ```
 2. Open terminal and change directory
 ```
